@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8002784189227448746}
   - component: {fileID: 4223848612183257346}
   - component: {fileID: -9137615996516981651}
+  - component: {fileID: 4107929626762681004}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -83,7 +84,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4278371960119211202, guid: d348dff3819df794186a80cb95777629, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -173,6 +174,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   speed: 5
   spriteRenderer: {fileID: 5778386242260847385}
+  _animator: {fileID: -9137615996516981651}
 --- !u!95 &-9137615996516981651
 Animator:
   serializedVersion: 7
@@ -195,3 +197,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4107929626762681004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8749998848818420759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c547cb20a14a0f04d975f9a0c4d2274a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerJump
+  rigid2D: {fileID: 3980555457297490160}
+  JumpForce: 7
+  spriteRenderer: {fileID: 5778386242260847385}

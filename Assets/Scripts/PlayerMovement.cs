@@ -6,6 +6,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator _animator;
 
+    public float WallJumpCD {  get;set; }
+
     private Vector2 movement;
     private float xPosLast;
 
@@ -14,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     {
         handelMovement();
         flipCharX();
+        if(WallJumpCD >0f)
+        {
+            WallJumpCD -= Time.deltaTime;
+        }
     }
 
     private void flipCharX()
@@ -32,16 +38,18 @@ public class PlayerMovement : MonoBehaviour
     }
     private void handelMovement()
     {
+        if (WallJumpCD > 0f) return;
+        
         float input = Input.GetAxisRaw("Horizontal");
         movement.x = input * speed * Time.deltaTime;
         transform.Translate(movement);
-        if (input != 0)
-        {
-            _animator.SetBool("isRunning", true);
-        }
-        else if (input == 0)
-        {
-            _animator.SetBool("isRunning", false);
-        }
+        //if (input != 0)
+        //{
+        //    _animator.SetBool("isRunning", true);
+        //}
+        //else if (input == 0)
+        //{
+        //    _animator.SetBool("isRunning", false);
+        //}
     }
 }
