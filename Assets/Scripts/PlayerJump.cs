@@ -8,6 +8,7 @@ public class PlayerJump : MonoBehaviour
 
 
     private float playerhalfHeight;
+    private float footOffset = 0.3f;
 
     private void Start()
     {
@@ -15,8 +16,9 @@ public class PlayerJump : MonoBehaviour
     }
     void Update()
     {
-        Debug.DrawRay(transform.position, Vector2.down* (playerhalfHeight + 0.1f), Color.red);
-        if(Input.GetButtonDown("Jump") && isGrounded())
+        Debug.DrawRay(new Vector2(transform.position.x - footOffset, transform.position.y), Vector2.down* (playerhalfHeight + 0.1f), Color.red);
+        Debug.DrawRay(new Vector2(transform.position.x + footOffset, transform.position.y), Vector2.down* (playerhalfHeight + 0.1f), Color.red);
+        if (Input.GetButtonDown("Jump") && isGrounded())
         {
 
             jump();
@@ -25,8 +27,12 @@ public class PlayerJump : MonoBehaviour
     }
     private bool isGrounded()
     {
-        return Physics2D.Raycast(transform.position, Vector2.down, playerhalfHeight + 0.1f, LayerMask.GetMask("Ground"));
+        //return Physics2D.Raycast(transform.position, Vector2.down, playerhalfHeight + 0.1f, LayerMask.GetMask("Ground"));
+        RaycastHit2D leftHit = Physics2D.Raycast(new Vector2(transform.position.x - footOffset, transform.position.y), Vector2.down, playerhalfHeight + 0.1f, LayerMask.GetMask("Ground"));
+        RaycastHit2D rightHit = Physics2D.Raycast(new Vector2(transform.position.x + footOffset, transform.position.y), Vector2.down, playerhalfHeight + 0.1f, LayerMask.GetMask("Ground"));
+        return leftHit.collider != null || rightHit.collider != null;
     }
+
     private void jump()
     {
         rigid2D.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
