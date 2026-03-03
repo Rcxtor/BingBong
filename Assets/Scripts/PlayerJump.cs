@@ -69,14 +69,14 @@ public class PlayerJump : MonoBehaviour
 
     private void Jump(float force)
     {
-        rigid2D.AddForce(Vector2.up * JumpForce, ForceMode2D.Impulse);
+        rigid2D.AddForce(Vector2.up * force, ForceMode2D.Impulse);
     }
 
     private void DoubleJump(float force)
     {
         rigid2D.linearVelocity = Vector2.zero;
         rigid2D.angularVelocity = 0;
-        Jump(DoubleJumpForce);
+        Jump(force);
         canDoubleJump = false;
         playerMovementState.setMoveState(PlayerMovementState.MoveState.double_jump);
 

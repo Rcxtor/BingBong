@@ -1,0 +1,51 @@
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    [SerializeField]private float speed = 5f;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Animator _animator;
+    private Rigidbody2D rb;
+    private float horizontalInput;
+
+    public float WallJumpCD {  get;set; }
+
+    private Vector2 movement;
+    private float xPosLast;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+    void Update()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        flipCharX();
+        if(WallJumpCD >0f)
+        {
+            WallJumpCD -= Time.deltaTime;
+        }
+    }
+
+    private void flipCharX()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal");
+        if (horizontalInput>0 && transform.position.x > xPosLast)
+        {
+            spriteRenderer.flipX = false; //right movement
+        }
+        else if (horizontalInput < 0 && transform.position.x < xPosLast)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        xPosLast = transform.position.x;
+    }
+    void FixedUpdate()
+    {
+        if (WallJumpCD <= 0f)
+        {
+            rb.linearVelocity = new Vector2(horizontalInput * speed, rb.linearVelocity.y);
+        }
+    }
+}

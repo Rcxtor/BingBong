@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField]private float speed = 5f;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Animator _animator;
 
-    public float WallJumpCD { get; set; }
+    public float WallJumpCD {  get;set; }
 
     private Vector2 movement;
     private float xPosLast;
@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     {
         handelMovement();
         flipCharX();
-        if (WallJumpCD > 0f)
+        if(WallJumpCD >0f)
         {
             WallJumpCD -= Time.deltaTime;
         }
@@ -25,11 +25,11 @@ public class PlayerMovement : MonoBehaviour
     private void flipCharX()
     {
         float input = Input.GetAxisRaw("Horizontal");
-        if (input > 0 && transform.position.x > xPosLast)
+        if (input>0 && transform.position.x > xPosLast)
         {
             spriteRenderer.flipX = false; //right movement
         }
-        else if (input < 0 && transform.position.x < xPosLast)
+        else if (input<0 && transform.position.x < xPosLast)
         {
             spriteRenderer.flipX = true;
         }
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private void handelMovement()
     {
         if (WallJumpCD > 0f) return;
-
+        
         float input = Input.GetAxisRaw("Horizontal");
         movement.x = input * speed * Time.deltaTime;
         transform.Translate(movement);

@@ -46,27 +46,27 @@ public class PlayerMovementState : MonoBehaviour
         {
             case MoveState.idle:
                 HandleIdle();
-            break;
+                break;
 
             case MoveState.run:
                 HandleRun();
-            break;
+                break;
 
             case MoveState.jump:
                 HandleJump();
-            break;
+                break;
 
             case MoveState.double_jump:
                 HandleDubleJump();
-            break;
+                break;
 
             case MoveState.wall_jump:
                 HandleWallJump();
-            break;
+                break;
 
             case MoveState.fall:
                 HandleFall();
-            break;
+                break;
 
             default:
                 Debug.LogError($"Invalid State: {moveState}");

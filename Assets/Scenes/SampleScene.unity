@@ -248,9 +248,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3980555457297490160, guid: 0978949d97029e64db0c8d64242d8462, type: 3}
+      propertyPath: m_Interpolate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980555457297490160, guid: 0978949d97029e64db0c8d64242d8462, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4107929626762681004, guid: 0978949d97029e64db0c8d64242d8462, type: 3}
       propertyPath: WallJumpCD
-      value: 0.1
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4107929626762681004, guid: 0978949d97029e64db0c8d64242d8462, type: 3}
       propertyPath: playerMovementState
