@@ -9,6 +9,8 @@ public class PlayerJump : MonoBehaviour
     [SerializeField] private float DoubleJumpForce = 5f;
     [SerializeField] private Vector2 WallJumpForce = new Vector2(4f, 8f);
     [SerializeField] private float WallJumpCD = 0.1f;
+    [SerializeField] ParticleSystem burstParticle;
+
     private PlayerMovement playerMovement;
 
 
@@ -78,6 +80,7 @@ public class PlayerJump : MonoBehaviour
         rigid2D.angularVelocity = 0;
         Jump(force);
         canDoubleJump = false;
+        burstParticle.Play();
         playerMovementState.setMoveState(PlayerMovementState.MoveState.double_jump);
 
     }
@@ -95,11 +98,11 @@ public class PlayerJump : MonoBehaviour
 
     private int GetWallJumpDirection()
     {
-        if (Physics2D.Raycast(transform.position, Vector2.right, playerhalfWidth + 0.1f, LayerMask.GetMask("Wall")))
+        if (Physics2D.Raycast(transform.position, Vector2.right, playerhalfWidth + 0.1f, LayerMask.GetMask("Ground")))
         {
             return -1;
         }
-        if (Physics2D.Raycast(transform.position, Vector2.left, playerhalfWidth + 0.1f, LayerMask.GetMask("Wall")))
+        if (Physics2D.Raycast(transform.position, Vector2.left, playerhalfWidth + 0.1f, LayerMask.GetMask("Ground")))
         {
             return 1;
         }
