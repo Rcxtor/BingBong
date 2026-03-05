@@ -67,6 +67,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+    public void KnockBackPlayer(Vector2 knockBackForce, int direction)
+    {
+       //print("KNOCKBACK");
+        knockBackForce *= direction;
+        rb.linearVelocity = Vector2.zero;
+        rb.angularVelocity = 0f;
+        rb.AddForce(knockBackForce,ForceMode2D.Impulse);
+
+    }
     private void handelMovement()
     {
         if (WallJumpCD > 0f) return;
