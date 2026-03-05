@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
+    [SerializeField] private Rigidbody2D rb;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private float speed = 1f;
     private int startDirection = 1;
     private int currentDirection;
     private float halfWidth;
     private Vector2 movement;
 
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-    }
+    //private void Awake()
+    //{
+    //    rb = GetComponent<Rigidbody2D>();
+    //    spriteRenderer = GetComponent<SpriteRenderer>();
+    //}
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void Start()
     {

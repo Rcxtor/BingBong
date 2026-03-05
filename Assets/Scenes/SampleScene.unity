@@ -182,37 +182,11 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &34980215
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34980209}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2c746f836aa02b45852d1a1d487e3de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  speed: 2
 --- !u!1 &216834380 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8749998848818420759, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
   m_PrefabInstance: {fileID: 1234403977}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &216834381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216834380}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8f8eec207fb8294c9c44a4f87a9f5d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyMovementLedge
-  speed: 1
 --- !u!95 &216834383
 Animator:
   serializedVersion: 7
@@ -5448,6 +5422,10 @@ PrefabInstance:
     - target: {fileID: 8749998848818420759, guid: 0978949d97029e64db0c8d64242d8462, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8749998848818420759, guid: 0978949d97029e64db0c8d64242d8462, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10686,6 +10664,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8749998848818420759, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10693,9 +10675,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8749998848818420759, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 216834383}
-    - targetCorrespondingSourceObject: {fileID: 8749998848818420759, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 216834381}
   m_SourcePrefab: {fileID: 100100000, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
 --- !u!1 &1248482067
 GameObject:
@@ -16033,6 +16012,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 8749998848818420759, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -16040,9 +16023,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8749998848818420759, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 34980214}
-    - targetCorrespondingSourceObject: {fileID: 8749998848818420759, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 34980215}
   m_SourcePrefab: {fileID: 100100000, guid: b593b9128ccd7e94cb9b2f1aec51b2a8, type: 3}
 --- !u!4 &1783759841 stripped
 Transform:
@@ -16291,7 +16271,6 @@ GameObject:
   - component: {fileID: 2081598207}
   - component: {fileID: 2081598206}
   - component: {fileID: 2081598205}
-  - component: {fileID: 2081598204}
   - component: {fileID: 2081598203}
   m_Layer: 0
   m_Name: Main Camera
@@ -16334,21 +16313,6 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2081598204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081598202}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec84318d71bd62f4b808014e904c630d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraFollow2D
-  target: {fileID: 592752414}
-  smoothSpeed: 10
-  offset: {x: 5, y: 2.6, z: 15}
 --- !u!114 &2081598205
 MonoBehaviour:
   m_ObjectHideFlags: 0
