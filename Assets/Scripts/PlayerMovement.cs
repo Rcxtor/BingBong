@@ -7,9 +7,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private ParticleSystem dustParticle;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator _animator;
+    
 
     public float WallJumpCD { get; set; }
-
+    private Vector2 knockBackToPlayer = new Vector2(6f, 4f);
     private Vector2 movement;
     private float xPosLast;
     private Vector2 particleStartPos;
@@ -67,14 +68,15 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-    public void KnockBackPlayer(Vector2 knockBackForce, int direction)
+    public void KnockBackPlayer(int direction)
     {
-       //print("KNOCKBACK");
-        knockBackForce *= direction;
+        //print("KNOCKBACK");
+        //WallJumpCD = 0.2f;
+        knockBackToPlayer.x *= direction;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
-        rb.AddForce(knockBackForce,ForceMode2D.Impulse);
-
+        rb.AddForce(knockBackToPlayer, ForceMode2D.Impulse);
+        //WallJumpCD = 0f;
     }
     private void handelMovement()
     {
@@ -83,13 +85,5 @@ public class PlayerMovement : MonoBehaviour
         float input = Input.GetAxisRaw("Horizontal");
         movement.x = input * speed * Time.deltaTime;
         transform.Translate(movement);
-        //if (input != 0)
-        //{
-        //    _animator.SetBool("isRunning", true);
-        //}
-        //else if (input == 0)
-        //{
-        //    _animator.SetBool("isRunning", false);
-        //}
     }
 }

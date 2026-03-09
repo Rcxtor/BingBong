@@ -2,18 +2,16 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Vector2 knockBackToPlayer=new Vector2 (8f,4f);
-    
     public void Die()
     {
         Destroy(gameObject);
-        // need to add animation
+        // need to add animation like poof
     }
     public void hitPlayer(Transform playerTransform)
     {
-        print("player hit");
+        //print("player hit");
         int direction = getDirection(playerTransform);
-        FindAnyObjectByType<PlayerMovement>().KnockBackPlayer(knockBackToPlayer,direction);
+        FindAnyObjectByType<PlayerMovement>().KnockBackPlayer(direction);
     }
 
     private int getDirection(Transform playerTransform)
