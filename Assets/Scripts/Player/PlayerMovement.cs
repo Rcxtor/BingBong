@@ -76,6 +76,7 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         rb.AddForce(knockBackToPlayer, ForceMode2D.Impulse);
+        knockBackToPlayer.x *= direction;
         //WallJumpCD = 0f;
     }
     private void handelMovement()
