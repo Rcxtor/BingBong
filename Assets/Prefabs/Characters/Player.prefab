@@ -9995,4 +9995,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b97dabee425fb374e9ba58eb97fa0ab8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  animator: {fileID: 5078221518267178628}
   health: 10
