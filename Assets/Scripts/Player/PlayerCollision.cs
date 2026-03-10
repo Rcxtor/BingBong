@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
@@ -18,9 +19,23 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.CompareTag("Fruit"))
         {
-           other.GetComponent<Fruit>().Collect();
+            other.GetComponent<Fruit>().Collect();
+        }
+        else if (other.CompareTag("Saw"))
+        {
+            other.GetComponent<Saw>().hitPlayer(transform);
+        }
+        else if (other.CompareTag("Trophy"))
+        {
+            collideWithTrophy();
         }
     }
+
+    private void collideWithTrophy()
+    {
+        print("You won");
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Enemy"))
