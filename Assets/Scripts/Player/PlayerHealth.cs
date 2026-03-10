@@ -9,7 +9,8 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth { get; private set; }
     public int maxHealth { get; private set; }
 
-    public static Action<int> OnPlayerTakeDamage;
+    public static Action<int> OnPlayerChangeHealth;
+    public static Action<int> OnPlayerRestoreHealth;
     public static Action OnPlayerDie;
 
     private const string flashRedAnim = "FlashRed";
@@ -25,12 +26,27 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         currentHealth -= damageAmount;
-        OnPlayerTakeDamage?.Invoke(currentHealth);
+        OnPlayerChangeHealth?.Invoke(currentHealth);
         animator.SetTrigger(flashRedAnim);
 
         if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
+    }
+    private void RestoreHealth(int healthRestored) 
+    { 
+        currentHealth += healthRestored;
+        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+        OnPlayerChangeHealth?.Invoke(currentHealth);
+
+    }
+    private void OnEnable()
+    {
+        Fruit.OnFruitCollected += RestoreHealth;
+    }
+    private void OnDisable()
+    {
+        Fruit.OnFruitCollected -= RestoreHealth;
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -71,14 +72,24 @@ public class PlayerMovement : MonoBehaviour
     public void KnockBackPlayer(int direction)
     {
         //print("KNOCKBACK");
-        //WallJumpCD = 0.2f;
+        WallJumpCD = 0.5f;
         knockBackToPlayer.x *= direction;
         rb.linearVelocity = Vector2.zero;
         rb.angularVelocity = 0f;
         rb.AddForce(knockBackToPlayer, ForceMode2D.Impulse);
         knockBackToPlayer.x *= direction;
-        //WallJumpCD = 0f;
+
+        StartCoroutine(StopAfterDelay());
     }
+
+    IEnumerator StopAfterDelay()
+    {
+        yield return new WaitForSeconds(1f); // delay time
+
+        rb.linearVelocity = new Vector2(0.2f,0.1f);
+        //rb.angularVelocity = 0f;
+    }
+
     private void handelMovement()
     {
         if (WallJumpCD > 0f) return;

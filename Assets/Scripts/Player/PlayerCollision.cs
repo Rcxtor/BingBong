@@ -13,7 +13,14 @@ public class PlayerCollision : MonoBehaviour
         halfHeight = spriteRenderer.bounds.extents.y;
     }
 
-    // Update is called once per frame
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Fruit"))
+        {
+           other.GetComponent<Fruit>().Collect();
+        }
+    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         if(other.gameObject.CompareTag("Enemy"))
