@@ -29,6 +29,11 @@ public class PlayerCollision : MonoBehaviour
         {
             collideWithTrophy();
         }
+        else if (other.CompareTag("Death"))
+        {
+            print("DEAD");
+            Destroy(gameObject);
+        }
     }
 
     private void collideWithTrophy()

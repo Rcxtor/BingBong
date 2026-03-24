@@ -9,6 +9,7 @@ TagManager:
   - Fruit
   - Saw
   - Trophy
+  - Death
   layers:
   - Default
   - TransparentFX
