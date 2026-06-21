@@ -1,0 +1,3 @@
+**BingBong** is a Mario-style 2D platformer built with Unity. The player runs, jumps, and fights through levels filled with patrolling enemies, saw traps, and spike hazards — reaching a goal flag to win.
+Features include stomp-to-kill enemy detection (using collision normals), wall jump and double jump with burst particle effects, a running dust particle system, fruit collectibles that restore health, and a C# Action-based event system connecting health, HUD, and collectibles without tight coupling. Enemy AI uses raycasting for ledge and wall detection to patrol platforms automatically.
+Built with: Unity · C#
